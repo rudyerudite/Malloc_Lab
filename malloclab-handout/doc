@@ -1,0 +1,55 @@
+malloc
+	sbrk sys call
+		alloc a big area @ time
+		malloc 0
+		metadata abt chunk
+		freeing from the end --> sll and adding to the end (if not found a chunk call sbrk() to get the alloc size) --> how to use existing chunk (algo for finding the required chunk)
+		splitting and merging
+			update the current avlbl size accrdnly
+		Linked list
+			sorted
+			binary search to extract?
+			both free and allocated at either ends
+			intially head==NULL 
+
+free
+	corner case: free(0) and free(NULL)
+	merging of free chunks 
+	setting of next pointer?
+	segregated lists
+
+calloc
+	intializes the m/y to 0
+
+realloc
+	adds or subs m/y from a prev alloc ptr
+
+
+- struct for each heap chunk
+	
+	struct block 
+	{
+	size_t size;
+	int free;
+	struct block *next;
+	}
+
+- cntns alloc of memory: usage of an array? ###
+- heap checker
+- initialize, split, merge?
+- store the metadata
+- dll for free chunks
+- reduce number of calls to sbrk() -- mult of mem page size
+
+int brk(void *addr);
+void *sbrk(intptr_t increment);
+-- The first, moves the program break to the address pointed by addr, while the latter increments the program break by increment bytes.
+-- The top end of the heap is called the program break.
+
+
+
+
+
+
+
+
